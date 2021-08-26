@@ -160,11 +160,8 @@ function _initXdc() {
               break;
             }
 
-            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-              children: ["XinPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
-                href: "/",
-                children: "here"
-              })]
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: "XinPay not available in the browser or Metamask is turned on"
             }), {
               autoClose: 2000
             });
@@ -182,11 +179,8 @@ function _initXdc() {
               break;
             }
 
-            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
-              children: ["XinPay not available in the browser. Please refer ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
-                href: "/",
-                children: "here"
-              })]
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
+              children: "XinPay not available in the browser or Metamask is turned on"
             }), {
               autoClose: 2000
             });
