@@ -56,7 +56,7 @@ export async function initXdc3() {
     if ((await GetCurrentProvider()) !== "xinpay") {
       toast(
         <div>
-          XinPay not available in the browser. Please refer <a href="/">here</a>
+          XinPay not available in the browser or Metamask is turned on
         </div>,
         {
           autoClose: 2000,
