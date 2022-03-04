@@ -44,7 +44,7 @@ export async function initXdc3() {
     if (!isXdc3Supported) {
       toast(
         <div>
-          Note: XDCPay is not available. Please ensure that MetaMask is disabled. For instructions, please refer to this <a href='https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1' style={{ color: 'black'}} target='_blank'>page</a>
+          Note: Please ensure that MetaMask is disabled. For instructions, please refer to this <a href='https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1' style={{ color: 'black'}} target='_blank'>page</a>
         </div>,
         {
           autoClose: 5000,
@@ -56,7 +56,7 @@ export async function initXdc3() {
     if ((await GetCurrentProvider()) !== "xinpay" || !window.ethereum) {
       toast(
         <div>
-          Note: XDCPay is not available. Please ensure that MetaMask is disabled. For instructions, please refer to this <a href='https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1' style={{ color: 'black'}} target='_blank'>page</a>
+          Note: Please ensure that MetaMask is disabled. For instructions, please refer to this <a href='https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1' style={{ color: 'black'}} target='_blank'>page</a>
         </div>,
         {
           autoClose: 5000,
@@ -250,7 +250,7 @@ export async function CallTransaction(tx) {
           .catch((e) => {
             toast(
                 <div>
-                  Note: XDCPay is not available. Please ensure that MetaMask is disabled. For instructions, please refer to this <a href='https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1' style={{ color: 'black'}} target='_blank'>page</a>
+                  Note: Please ensure that MetaMask is disabled. For instructions, please refer to this <a href='https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1' style={{ color: 'black'}} target='_blank'>page</a>
                 </div>,
                 {
                   autoClose: 5000,
