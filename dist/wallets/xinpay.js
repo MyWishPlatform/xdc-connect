@@ -5,16 +5,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.IsXdc3Supported = IsXdc3Supported;
-exports.GetProvider = GetProvider;
-exports.GetChainId = GetChainId;
-exports.initXdc3 = initXdc3;
-exports._initListerner = _initListerner;
-exports.GetCurrentProvider = GetCurrentProvider;
-exports.SendTransaction = SendTransaction;
+exports.ApothemProvider = void 0;
 exports.CallTransaction = CallTransaction;
+exports.GetChainId = GetChainId;
+exports.GetCurrentProvider = GetCurrentProvider;
+exports.GetNativeBalance = void 0;
+exports.GetProvider = GetProvider;
 exports.IsLocked = IsLocked;
-exports.GetNativeBalance = exports.ApothemProvider = exports.MainnetProvider = void 0;
+exports.IsXdc3Supported = IsXdc3Supported;
+exports.MainnetProvider = void 0;
+exports.SendTransaction = SendTransaction;
+exports._initListerner = _initListerner;
+exports.initXdc3 = initXdc3;
 
 var _xdc = _interopRequireDefault(require("xdc3"));
 
@@ -147,7 +149,7 @@ function _initXdc() {
               break;
             }
 
-            (0, _reactToastify.toast)("Please unlock XinPay to continue", {
+            (0, _reactToastify.toast)("Please unlock XDCPay to continue", {
               autoClose: 2000
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
@@ -160,10 +162,17 @@ function _initXdc() {
               break;
             }
 
-            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-              children: "XinPay not available in the browser or Metamask is turned on"
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              children: ["Note: XDCPay is not available. Please ensure that MetaMask is disabled. For instructions, please refer to this ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                href: "https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1",
+                style: {
+                  color: 'black'
+                },
+                target: "_blank",
+                children: "page"
+              })]
             }), {
-              autoClose: 2000
+              autoClose: 5000
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
 
@@ -172,43 +181,59 @@ function _initXdc() {
             return GetCurrentProvider();
 
           case 13:
-            _context7.t0 = _context7.sent;
+            _context7.t1 = _context7.sent;
+            _context7.t0 = _context7.t1 !== "xinpay";
 
-            if (!(_context7.t0 !== "xinpay")) {
+            if (_context7.t0) {
               _context7.next = 17;
               break;
             }
 
-            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsx)("div", {
-              children: "XinPay not available in the browser or Metamask is turned on"
+            _context7.t0 = !window.ethereum;
+
+          case 17:
+            if (!_context7.t0) {
+              _context7.next = 20;
+              break;
+            }
+
+            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+              children: ["Note: XDCPay is not available. Please ensure that MetaMask is disabled. For instructions, please refer to this ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                href: "https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1",
+                style: {
+                  color: 'black'
+                },
+                target: "_blank",
+                children: "page"
+              })]
             }), {
-              autoClose: 2000
+              autoClose: 5000
             });
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletDisconnected()));
 
-          case 17:
-            _context7.next = 19;
+          case 20:
+            _context7.next = 22;
             return window.ethereum.enable();
 
-          case 19:
+          case 22:
             _initListerner();
 
-            _context7.next = 22;
+            _context7.next = 25;
             return GetProvider();
 
-          case 22:
+          case 25:
             provider = _context7.sent;
             xdc3 = new _xdc.default(provider);
-            _context7.next = 26;
+            _context7.next = 29;
             return xdc3.eth.getAccounts();
 
-          case 26:
+          case 29:
             accounts = _context7.sent;
             addresses = accounts;
-            _context7.next = 30;
+            _context7.next = 33;
             return xdc3.eth.getChainId();
 
-          case 30:
+          case 33:
             chain_id = _context7.sent;
             return _context7.abrupt("return", _store.default.dispatch(actions.WalletConnected({
               address: accounts[0],
@@ -217,17 +242,17 @@ function _initXdc() {
               explorer: _constant.CHAIN_DATA[chain_id]
             })));
 
-          case 34:
-            _context7.prev = 34;
-            _context7.t1 = _context7["catch"](0);
-            console.log(_context7.t1);
-
           case 37:
+            _context7.prev = 37;
+            _context7.t2 = _context7["catch"](0);
+            console.log(_context7.t2);
+
+          case 40:
           case "end":
             return _context7.stop();
         }
       }
-    }, _callee7, null, [[0, 34]]);
+    }, _callee7, null, [[0, 37]]);
   }));
   return _initXdc.apply(this, arguments);
 }

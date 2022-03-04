@@ -37,29 +37,29 @@ export async function initXdc3() {
   try {
     const isLocked = await IsLocked();
     if (isLocked === true) {
-      toast("Please unlock XinPay to continue", { autoClose: 2000 });
+      toast("Please unlock XDCPay to continue", { autoClose: 2000 });
       return store.dispatch(actions.WalletDisconnected());
     }
     const isXdc3Supported = IsXdc3Supported();
     if (!isXdc3Supported) {
       toast(
         <div>
-          XinPay not available in the browser or Metamask is turned on
+          Note: XDCPay is not available. Please ensure that MetaMask is disabled. For instructions, please refer to this <a href='https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1' style={{ color: 'black'}} target='_blank'>page</a>
         </div>,
         {
-          autoClose: 2000,
+          autoClose: 5000,
         }
       );
 
       return store.dispatch(actions.WalletDisconnected());
     }
-    if ((await GetCurrentProvider()) !== "xinpay") {
+    if ((await GetCurrentProvider()) !== "xinpay" || !window.ethereum) {
       toast(
         <div>
-          XinPay not available in the browser or Metamask is turned on
+          Note: XDCPay is not available. Please ensure that MetaMask is disabled. For instructions, please refer to this <a href='https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1' style={{ color: 'black'}} target='_blank'>page</a>
         </div>,
         {
-          autoClose: 2000,
+          autoClose: 5000,
         }
       );
       return store.dispatch(actions.WalletDisconnected());
