@@ -247,7 +247,17 @@ export async function CallTransaction(tx) {
           .then((date) => {
             resolve(date);
           })
-          .catch((e) => reject(e));
+          .catch((e) => {
+            toast(
+                <div>
+                  Note: XDCPay is not available. Please ensure that MetaMask is disabled. For instructions, please refer to this <a href='https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1' style={{ color: 'black'}} target='_blank'>page</a>
+                </div>,
+                {
+                  autoClose: 5000,
+                }
+            );
+            reject(e);
+          });
       })
       .catch((e) => {
         console.log(arguments, e);
