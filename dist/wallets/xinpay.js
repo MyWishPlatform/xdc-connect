@@ -688,7 +688,19 @@ function _CallTransaction() {
                           xdc3.eth.call(tx).then(function (date) {
                             resolve(date);
                           }).catch(function (e) {
-                            return reject(e);
+                            (0, _reactToastify.toast)( /*#__PURE__*/(0, _jsxRuntime.jsxs)("div", {
+                              children: ["Note: XDCPay is not available. Please ensure that MetaMask is disabled. For instructions, please refer to this ", /*#__PURE__*/(0, _jsxRuntime.jsx)("a", {
+                                href: "https://wadzpay.medium.com/guide-wtk-launches-on-xdc-network-binance-smart-chain-b82caa511a1",
+                                style: {
+                                  color: 'black'
+                                },
+                                target: "_blank",
+                                children: "page"
+                              })]
+                            }), {
+                              autoClose: 5000
+                            });
+                            reject(e);
                           });
 
                         case 16:
